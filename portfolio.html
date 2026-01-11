@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | DIKALA Photography</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/style.css">
+    <!-- Data JS -->
+    <script src="static/js/data.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gold: '#ffffff',
+                        dark: '#000000',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gradient-dark text-gray-400 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html"
+                        class="flex items-center gap-3 font-serif text-2xl text-white tracking-wider font-bold">
+                        <img src="static/assets/logo.png" alt="Logo" class="h-20 w-auto">
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="about.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="portfolio.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Portfolio</a>
+                        <a href="services.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
+
+                        <a href="https://linktr.ee/dikala.mdn"
+                            class="btn-gradient px-5 py-2 rounded-full text-sm font-medium transition-all">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-dark" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="about.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="portfolio.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+                <a href="services.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
+
+                <a href="https://linktr.ee/dikala.mdn"
+                    class="text-gold block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-20">
+        <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <!-- Masonry-like Grid -->
+            <div id="portfolio-grid" class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+                <!-- Javascript will inject items here -->
+            </div>
+
+            <div class="text-center mt-12">
+                <button id="show-all-btn" onclick="showAllPortfolio()"
+                    class="px-8 py-3 btn-gradient font-medium rounded-full hover:bg-gray-200 transition-all uppercase tracking-widest text-sm"
+                    style="display: none;">
+                    Show All
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-serif text-2xl font-bold mb-4">DIKALA</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Capturing moments that last a lifetime.
+                        Professional photography services for weddings, portraits, and events.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-gold">Contact</h4>
+                    <p class="text-gray-400 text-sm">dikalamdn@gmail.com</p>
+                    <p class="text-gray-400 text-sm">+62 812-6034-6719</p>
+                    <p class="text-gray-400 text-sm"><a href="https://www.tiktok.com/@dikala.mdn">Medan, Indonesia</a>
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-gold">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Tiktok</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Linktree
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+                &copy; 2026 DIKALA Photography. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('portfolio-grid');
+            const showAllBtn = document.getElementById('show-all-btn');
+            const ITEMS_TO_SHOW = 12; // Increased initial load since they are just images
+
+            // Ensure portfolioItems exists
+            if (typeof portfolioItems !== 'undefined') {
+                // Flatten all images from all projects into a single array
+                const allImages = portfolioItems.flatMap(item => item.images);
+
+                // Shuffle array (optional, but looks better for a gallery) - skipping for now to keep order deterministic
+                // allImages.sort(() => Math.random() - 0.5);
+
+                // Render Items
+                allImages.forEach((imagePath, index) => {
+                    const isHidden = index >= ITEMS_TO_SHOW;
+                    const itemHtml = `
+                         <div class="break-inside-avoid relative group overflow-hidden rounded-sm block portfolio-item mb-8 ${isHidden ? 'hidden' : ''}">
+                             <img src="${imagePath}" alt="Portfolio Image"
+                                 class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105 grayscale-off">
+                         </div>
+                     `;
+                    grid.innerHTML += itemHtml;
+                });
+
+                // Show Button Condition
+                if (allImages.length > ITEMS_TO_SHOW) {
+                    showAllBtn.style.display = 'inline-block';
+                }
+            }
+        });
+
+        // Global function for onclick
+        function showAllPortfolio() {
+            const hiddenItems = document.querySelectorAll('.portfolio-item.hidden');
+            hiddenItems.forEach(item => {
+                item.classList.remove('hidden');
+                item.classList.add('animate-fade-in-up');
+            });
+            document.getElementById('show-all-btn').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

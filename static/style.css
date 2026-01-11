@@ -1,0 +1,100 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}
+
+/* Global Grayscale Images */
+img {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+
+img:hover {
+    filter: grayscale(0%);
+}
+
+.grayscale-off {
+    filter: grayscale(0%) !important;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+    background-color: #000000;
+}
+
+/* Custom Gradient Utilities */
+.bg-gradient-dark {
+    background: linear-gradient(135deg, #111111 0%, #000000 100%);
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #ffffff, #9ca3af);
+}
+
+.text-gradient-gold {
+    /* Keeping the name generic but mapping to silver/grey for B&W theme */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #e5e7eb, #6b7280);
+}
+
+.btn-gradient {
+    background-image: linear-gradient(to right, #ffffff, #d1d5db);
+    color: black;
+}
+
+.btn-gradient:hover {
+    background-image: linear-gradient(to right, #d1d5db, #9ca3af);
+}
+
+.card-gradient {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-gradient:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Custom Utilities that Tailwind might miss or for specific overrides */
+.glass-nav {
+    background: rgba(0, 0, 0, 0.85);
+    /* Pure black glass */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.image-hover-zoom {
+    overflow: hidden;
+}
+
+.image-hover-zoom img {
+    transition: transform 0.5s ease;
+}
+
+.image-hover-zoom:hover img {
+    transform: scale(1.05);
+}

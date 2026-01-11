@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | DIKALA Photography</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/style.css">
+    <!-- Data JS -->
+    <script src="static/js/data.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gold: '#ffffff',
+                        dark: '#000000',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gradient-dark text-gray-400 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html"
+                        class="flex items-center gap-3 font-serif text-2xl text-white tracking-wider font-bold">
+                        <img src="static/assets/dikala.png" alt="Logo" class="h-20 w-auto">
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="about.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="portfolio.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Portfolio</a>
+                        <a href="services.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
+
+                        <a href="https://linktr.ee/dikala.mdn"
+                            class="btn-gradient px-5 py-2 rounded-full text-sm font-medium transition-all">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-dark" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="about.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="portfolio.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+                <a href="services.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
+
+                <a href="https://linktr.ee/dikala.mdn"
+                    class="text-gold block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-20">
+        <!-- Project Header -->
+        <div class="relative h-[60vh] flex items-end pb-20 justify-center">
+            <div class="absolute inset-0 z-0">
+                <img id="project-hero-image" src="" alt=""
+                    class="w-full h-full object-cover opacity-60 grayscale-off project-image">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+            </div>
+            <div class="relative z-10 text-center px-4">
+                <span id="project-category"
+                    class="text-gold text-sm uppercase tracking-widest font-bold mb-2 block"></span>
+                <h1 id="project-title" class="font-serif text-5xl md:text-6xl text-white font-bold mb-4"></h1>
+            </div>
+        </div>
+
+        <!-- Project Content -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div class="prose prose-invert prose-lg mx-auto">
+
+
+
+                <!-- Gallery Grid for Project -->
+                <div id="project-gallery" class="columns-1 md:columns-2 gap-4 my-12 not-prose space-y-4">
+                    <!-- JS will inject images here -->
+                </div>
+
+
+            </div>
+
+            <div class="text-center mt-16 pt-16 border-t border-gray-800">
+                <h3 class="font-serif text-2xl text-white mb-6">Ready to start your project?</h3>
+                <a href="https://linktr.ee/dikala.mdn"
+                    class="px-8 py-3 bg-gold text-black font-medium rounded-sm hover:bg-gray-200 transition-colors uppercase tracking-widest text-sm">Book
+                    This Service</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-serif text-2xl font-bold mb-4">DIKALA</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Capturing moments that last a lifetime.
+                        Professional photography services for weddings, portraits, and events.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-gold">Contact</h4>
+                    <p class="text-gray-400 text-sm">dikalamdn@gmail.com</p>
+                    <p class="text-gray-400 text-sm">+62 812-6034-6719</p>
+                    <p class="text-gray-400 text-sm"><a href="https://www.tiktok.com/@dikala.mdn">Medan, Indonesia</a>
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-gold">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Tiktok</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Linktree
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+                &copy; 2026 DIKALA Photography. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = parseInt(urlParams.get('id'));
+
+            // Find item in data (ensure portfolioItems is loaded)
+            let item = null;
+            if (typeof portfolioItems !== 'undefined') {
+                item = portfolioItems.find(i => i.id === id);
+            }
+
+            if (item) {
+                document.title = `${item.title} | DIKALA Photography`;
+                document.getElementById('project-title').innerText = item.title;
+                document.getElementById('project-category').innerText = item.category;
+
+                document.getElementById('project-hero-image').src = item.cover;
+
+                // Render Gallery Logic
+                const galleryContainer = document.getElementById('project-gallery');
+                if (item.images && item.images.length > 0) {
+                    item.images.forEach(imgSrc => {
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.className = "w-full rounded-sm grayscale-off hover:scale-105 transition-all duration-500 break-inside-avoid mb-4";
+                        galleryContainer.appendChild(img);
+                    });
+                }
+            } else {
+                document.querySelector('main').innerHTML = `
+                    <div class="h-screen flex items-center justify-center">
+                        <div class="text-center">
+                            <h1 class="text-4xl text-white font-serif mb-4">Project Not Found</h1>
+                            <a href="portfolio.html" class="text-gold hover:underline">Back to Portfolio</a>
+                        </div>
+                    </div>
+                 `;
+            }
+        });
+    </script>
+</body>
+
+</html>

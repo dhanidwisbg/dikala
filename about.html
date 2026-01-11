@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | DIKALA Photography</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gold: '#ffffff',
+                        dark: '#000000',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gradient-dark text-gray-400 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html"
+                        class="flex items-center gap-3 font-serif text-2xl text-white tracking-wider font-bold">
+                        <img src="static/assets/logo.png" alt="Logo" class="h-20 w-auto">
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="about.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="portfolio.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Portfolio</a>
+                        <a href="services.html"
+                            class="hover:text-gold text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
+
+                        <a href="https://linktr.ee/dikala.mdn"
+                            class="btn-gradient px-5 py-2 rounded-full text-sm font-medium transition-all">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-dark" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="about.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="portfolio.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+                <a href="services.html"
+                    class="hover:text-gold text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
+
+                <a href="https://linktr.ee/dikala.mdn"
+                    class="text-gold block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-20">
+        <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <!-- Image Grid -->
+                <!-- Image Container -->
+                <div class="relative">
+                    <div
+                        class="absolute inset-0 bg-gold/20 transform translate-x-4 translate-y-4 rounded-sm hidden md:block">
+                    </div>
+                    <img src="static/assets/about-story.png" alt="Our Story"
+                        class="relative w-full h-auto rounded-sm shadow-2xl grayscale-off">
+                </div>
+
+                <!-- Content -->
+                <div class="text-left">
+                    <span class="text-gold text-sm uppercase tracking-widest font-bold mb-2 block">Our Story</span>
+                    <h1 class="font-serif text-4xl md:text-5xl text-white mb-6">Beyond the Lens</h1>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Founded in 2025, DIKALA was born from a passion for storytelling. We believe that photography is
+                        more
+                        than just clicking a button; it's about preserving moments that would otherwise fade.
+                    </p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Our team of dedicated artists works tirelessly to ensure that every smile, every tear, and every
+                        embrace
+                        is captured with authenticity and grace. We specialize in natural light photography, focusing on
+                        genuine
+                        emotions rather than rigid poses.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="py-20 bg-gray-900 border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="font-serif text-3xl text-white mb-12">Meet the Team</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Member 1 -->
+                    <div class="group">
+                        <div
+                            class="aspect-square overflow-hidden mb-4 rounded-full w-48 mx-auto border-2 border-transparent group-hover:border-gold transition-all">
+                            <img src="static/assets/team-jhody.png" alt="Members"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                        </div>
+                        <h3 class="text-xl text-white font-serif">Jhody</h3>
+                        <p class="text-gold text-sm uppercase tracking-widest">Second Photographer</p>
+                    </div>
+                    <!-- Member 2 -->
+                    <div class="group">
+                        <div
+                            class="aspect-square overflow-hidden mb-4 rounded-full w-48 mx-auto border-2 border-transparent group-hover:border-gold transition-all">
+                            <img src="static/assets/team-dila.png" alt="Members"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                        </div>
+                        <h3 class="text-xl text-white font-serif">Dila</h3>
+                        <p class="text-gold text-sm uppercase tracking-widest">Admin</p>
+                    </div>
+                    <!-- Member 3 -->
+                    <div class="group">
+                        <div
+                            class="aspect-square overflow-hidden mb-4 rounded-full w-48 mx-auto border-2 border-transparent group-hover:border-gold transition-all">
+                            <img src="static/assets/team-dhani.png" alt="Members"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                        </div>
+                        <h3 class="text-xl text-white font-serif">Dhani</h3>
+                        <p class="text-gold text-sm uppercase tracking-widest">Lead Photographer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-serif text-2xl font-bold mb-4">DIKALA</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Capturing moments that last a lifetime.
+                        Professional photography services for weddings, portraits, and events.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-gold">Contact</h4>
+                    <p class="text-gray-400 text-sm">dikalamdn@gmail.com</p>
+                    <p class="text-gray-400 text-sm">+62 812-6034-6719</p>
+                    <p class="text-gray-400 text-sm"><a href="https://www.tiktok.com/@dikala.mdn">Medan, Indonesia</a>
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-gold">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Tiktok</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Linktree
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+                &copy; 2026 DIKALA Photography. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/script.js"></script>
+</body>
+
+</html>

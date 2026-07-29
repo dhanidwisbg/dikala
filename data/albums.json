@@ -1,0 +1,123 @@
+{
+  "albums": [
+    {
+      "id": "ethereal-moments",
+      "title": "Ethereal Moments",
+      "category": "Portrait",
+      "cover": "/albums/ethereal-moments/img-1.jpg",
+      "date": "2026-01-15",
+      "images": [
+        "/albums/ethereal-moments/img-1.jpg",
+        "/albums/ethereal-moments/img-2.jpg",
+        "/albums/ethereal-moments/img-3.jpg",
+        "/albums/ethereal-moments/img-4.jpg",
+        "/albums/ethereal-moments/img-5.jpg"
+      ],
+      "createdAt": "2026-01-15T00:00:00.000Z"
+    },
+    {
+      "id": "urban-soul",
+      "title": "Urban Soul",
+      "category": "Street",
+      "cover": "/albums/urban-soul/img-4.jpg",
+      "date": "2026-02-10",
+      "images": [
+        "/albums/urban-soul/img-1.jpg",
+        "/albums/urban-soul/img-2.jpg",
+        "/albums/urban-soul/img-3.jpg",
+        "/albums/urban-soul/img-4.jpg",
+        "/albums/urban-soul/img-5.jpg",
+        "/albums/urban-soul/img-6.jpg"
+      ],
+      "createdAt": "2026-02-10T00:00:00.000Z"
+    },
+    {
+      "id": "golden-hour",
+      "title": "Golden Hour",
+      "category": "Nature",
+      "cover": "/albums/golden-hour/img-1.jpg",
+      "date": "2026-03-05",
+      "images": [
+        "/albums/golden-hour/img-1.jpg",
+        "/albums/golden-hour/img-2.jpg",
+        "/albums/golden-hour/img-3.jpg",
+        "/albums/golden-hour/img-4.jpg"
+      ],
+      "createdAt": "2026-03-05T00:00:00.000Z"
+    },
+    {
+      "id": "intimate-vows",
+      "title": "Intimate Vows",
+      "category": "Wedding",
+      "cover": "/albums/intimate-vows/img-2.jpg",
+      "date": "2026-03-20",
+      "images": [
+        "/albums/intimate-vows/img-1.jpg",
+        "/albums/intimate-vows/img-2.jpg",
+        "/albums/intimate-vows/img-3.jpg",
+        "/albums/intimate-vows/img-4.jpg",
+        "/albums/intimate-vows/img-5.jpg"
+      ],
+      "createdAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "city-lights",
+      "title": "City Lights",
+      "category": "Night",
+      "cover": "/albums/city-lights/img-3.jpg",
+      "date": "2026-04-12",
+      "images": [
+        "/albums/city-lights/img-1.jpg",
+        "/albums/city-lights/img-2.jpg",
+        "/albums/city-lights/img-3.jpg",
+        "/albums/city-lights/img-4.jpg"
+      ],
+      "createdAt": "2026-04-12T00:00:00.000Z"
+    },
+    {
+      "id": "neon-dreams",
+      "title": "Neon Dreams",
+      "category": "Abstract",
+      "cover": "/albums/neon-dreams/img-3.jpg",
+      "date": "2026-05-08",
+      "images": [
+        "/albums/neon-dreams/img-1.jpg",
+        "/albums/neon-dreams/img-2.jpg",
+        "/albums/neon-dreams/img-3.jpg",
+        "/albums/neon-dreams/img-4.jpg"
+      ],
+      "createdAt": "2026-05-08T00:00:00.000Z"
+    },
+    {
+      "id": "the-celebration",
+      "title": "The Celebration",
+      "category": "Wedding",
+      "cover": "/albums/the-celebration/img-1.jpg",
+      "date": "2026-06-15",
+      "images": [
+        "/albums/the-celebration/img-1.jpg",
+        "/albums/the-celebration/img-2.jpg",
+        "/albums/the-celebration/img-3.jpg",
+        "/albums/the-celebration/img-4.jpg",
+        "/albums/the-celebration/img-5.jpg"
+      ],
+      "createdAt": "2026-06-15T00:00:00.000Z"
+    },
+    {
+      "id": "midnight-flower",
+      "title": "Midnight Flower",
+      "category": "Nature",
+      "cover": "/albums/midnight-flower/img-3.jpg",
+      "date": "2026-07-01",
+      "images": [
+        "/albums/midnight-flower/img-1.jpg",
+        "/albums/midnight-flower/img-2.jpg",
+        "/albums/midnight-flower/img-3.jpg",
+        "/albums/midnight-flower/img-4.jpg",
+        "/albums/midnight-flower/img-5.jpg",
+        "/albums/midnight-flower/img-6.jpg"
+      ],
+      "createdAt": "2026-07-01T00:00:00.000Z"
+    }
+  ]
+}

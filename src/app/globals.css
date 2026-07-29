@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ========================================
+   DIKALA Photography — Global Styles
+   ======================================== */
+
+/* --- Custom Theme via Tailwind v4 @theme --- */
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+
+  --color-gold: #ffffff;
+  --color-dark: #000000;
+  --color-dark-900: #111111;
+  --color-dark-800: #1a1a1a;
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* --- Base HTML --- */
+html {
+  scroll-behavior: smooth;
+  background-color: #000000;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Global Grayscale Images (signature DIKALA effect) --- */
+img {
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+
+img:hover {
+  filter: grayscale(0%);
+}
+
+.grayscale-off {
+  filter: grayscale(0%) !important;
+}
+
+/* No grayscale on admin images */
+.admin-zone img {
+  filter: none !important;
+}
+
+/* --- Gradient Utilities --- */
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #111111 0%, #000000 100%);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #ffffff, #9ca3af);
+}
+
+.text-gradient-gold {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #e5e7eb, #6b7280);
+}
+
+/* --- Button Styles --- */
+.btn-gradient {
+  background-image: linear-gradient(to right, #ffffff, #d1d5db);
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background-image: linear-gradient(to right, #d1d5db, #9ca3af);
+}
+
+/* --- Card Styles --- */
+.card-gradient {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.card-gradient:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Glass Navigation --- */
+.glass-nav {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- Misc Utilities --- */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.image-hover-zoom {
+  overflow: hidden;
+}
+
+.image-hover-zoom img {
+  transition: transform 0.5s ease;
+}
+
+.image-hover-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* --- Animations --- */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+/* Staggered animation delays for grid items */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.4s; }
+
+/* --- Masonry Layout Fix --- */
+.masonry-grid {
+  column-gap: 1rem;
+}
+
+.masonry-grid > * {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}

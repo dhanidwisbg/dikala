@@ -8,6 +8,10 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState(null);
 
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [editData, setEditData] = useState(null);
+  const [saving, setSaving] = useState(false);
+
   useEffect(() => {
     fetchAlbums();
   }, []);
@@ -39,6 +43,37 @@ export default function AdminDashboard() {
       alert('Error deleting album');
     }
     setDeletingId(null);
+  };
+
+  const openEdit = (album) => {
+    setEditData({ ...album, assetFolder: album.assetFolder || '' });
+    setEditModalOpen(true);
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/albums/${editData.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: editData.title,
+          category: editData.category,
+          assetFolder: editData.assetFolder,
+        }),
+      });
+      if (res.ok) {
+        const updated = await res.json();
+        setAlbums(albums.map(a => a.id === updated.id ? updated : a));
+        setEditModalOpen(false);
+      } else {
+        alert('Failed to update album');
+      }
+    } catch (err) {
+      alert('Error updating album');
+    }
+    setSaving(false);
   };
 
   return (
@@ -120,7 +155,16 @@ export default function AdminDashboard() {
                     <td className="px-6 py-4 text-sm text-center font-medium">
                       {album.images.length}
                     </td>
-                    <td className="px-6 py-4 text-right">
+                    <td className="px-6 py-4 text-right space-x-2">
+                      <button
+                        onClick={() => openEdit(album)}
+                        className="text-blue-400 hover:text-blue-300 transition-colors p-2"
+                        title="Edit Album"
+                      >
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                      </button>
                       <button
                         onClick={() => handleDelete(album.id, album.title)}
                         disabled={deletingId === album.id}
@@ -143,6 +187,64 @@ export default function AdminDashboard() {
           </table>
         </div>
       </div>
+
+      {/* Edit Modal */}
+      {editModalOpen && editData && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-gray-900 border border-gray-700 rounded-md max-w-md w-full p-6 shadow-2xl animate-fade-in-up">
+            <h2 className="font-serif text-2xl text-white mb-6">Edit Album</h2>
+            <form onSubmit={handleUpdate} className="space-y-4">
+              <div>
+                <label className="block text-xs font-medium text-gray-400 uppercase tracking-widest mb-2">Title</label>
+                <input
+                  type="text"
+                  required
+                  value={editData.title}
+                  onChange={(e) => setEditData({ ...editData, title: e.target.value })}
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-sm text-white focus:outline-none focus:border-white transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-400 uppercase tracking-widest mb-2">Category</label>
+                <input
+                  type="text"
+                  required
+                  value={editData.category}
+                  onChange={(e) => setEditData({ ...editData, category: e.target.value })}
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-sm text-white focus:outline-none focus:border-white transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-400 uppercase tracking-widest mb-2">Assets Folder (e.g., 1, 2, 3)</label>
+                <input
+                  type="text"
+                  required
+                  value={editData.assetFolder}
+                  onChange={(e) => setEditData({ ...editData, assetFolder: e.target.value })}
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-sm text-white focus:outline-none focus:border-white transition-colors"
+                />
+                <p className="text-xs text-gray-500 mt-2">Images will be automatically loaded from <code>public/assets/{'{folder}'}</code></p>
+              </div>
+              <div className="flex justify-end gap-4 mt-8 pt-4 border-t border-gray-800">
+                <button
+                  type="button"
+                  onClick={() => setEditModalOpen(false)}
+                  className="px-6 py-2 text-sm text-gray-400 hover:text-white transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={saving}
+                  className="px-6 py-2 bg-white text-black font-medium rounded-sm hover:bg-gray-200 transition-colors uppercase tracking-widest text-xs disabled:opacity-50"
+                >
+                  {saving ? 'Saving...' : 'Save Changes'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -101,3 +101,37 @@ export function deleteAlbum(id) {
   fs.writeFileSync(DATA_PATH, JSON.stringify({ albums: filtered }, null, 2), 'utf-8');
   return true;
 }
+
+/**
+ * Update an existing album
+ */
+export function updateAlbum(id, { title, category, assetFolder }) {
+  const albums = getAlbums();
+  const index = albums.findIndex((a) => a.id === id);
+  if (index === -1) return null;
+
+  const album = albums[index];
+
+  if (title) album.title = title;
+  if (category) album.category = category;
+
+  if (assetFolder && assetFolder !== album.assetFolder) {
+    album.assetFolder = assetFolder;
+    // Update image paths from the new asset folder
+    const assetPath = path.join(process.cwd(), 'public', 'assets', assetFolder);
+    if (fs.existsSync(assetPath)) {
+      const files = fs.readdirSync(assetPath).filter(f => f.match(/\.(jpg|jpeg|png|webp|gif)$/i));
+      // Sort naturally (e.g. img-2 before img-10)
+      files.sort((a, b) => a.localeCompare(b, undefined, {numeric: true, sensitivity: 'base'}));
+      
+      const newImages = files.map(f => `/assets/${assetFolder}/${f}`);
+      if (newImages.length > 0) {
+        album.images = newImages;
+        album.cover = newImages[0];
+      }
+    }
+  }
+
+  fs.writeFileSync(DATA_PATH, JSON.stringify({ albums }, null, 2), 'utf-8');
+  return album;
+}

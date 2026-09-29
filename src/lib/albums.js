@@ -35,7 +35,7 @@ export function getCategories() {
  * Returns the created album object.
  */
 export function createAlbum({ title, category, date, images }) {
-  // Generate slug from title
+  // Generate slug from title (used as album ID only)
   const slug = title
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
@@ -43,8 +43,11 @@ export function createAlbum({ title, category, date, images }) {
     .replace(/-+/g, '-')
     .trim();
 
-  // Ensure the album directory exists
-  const albumDir = path.join(ALBUMS_PUBLIC_DIR, slug);
+  // Use the original title as the folder name
+  const folderName = title.trim();
+
+  // Ensure the album directory exists using the original title
+  const albumDir = path.join(ALBUMS_PUBLIC_DIR, folderName);
   if (!fs.existsSync(albumDir)) {
     fs.mkdirSync(albumDir, { recursive: true });
   }
@@ -59,7 +62,7 @@ export function createAlbum({ title, category, date, images }) {
 
     // img.data is a Buffer
     fs.writeFileSync(filePath, img.data);
-    imagePaths.push(`/albums/${slug}/${filename}`);
+    imagePaths.push(`/albums/${encodeURIComponent(folderName)}/${filename}`);
   }
 
   // Build album object
@@ -70,6 +73,7 @@ export function createAlbum({ title, category, date, images }) {
     cover: imagePaths[0] || '',
     date: date || new Date().toISOString().split('T')[0],
     images: imagePaths,
+    assetFolder: folderName,
     createdAt: new Date().toISOString(),
   };
 
@@ -86,14 +90,17 @@ export function createAlbum({ title, category, date, images }) {
  */
 export function deleteAlbum(id) {
   const albums = getAlbums();
-  const filtered = albums.filter((a) => a.id !== id);
+  const album = albums.find((a) => a.id === id);
 
-  if (filtered.length === albums.length) {
+  if (!album) {
     return false; // Not found
   }
 
-  // Delete the album image directory
-  const albumDir = path.join(ALBUMS_PUBLIC_DIR, id);
+  const filtered = albums.filter((a) => a.id !== id);
+
+  // Delete the album image directory (check assetFolder first, then fallback to id)
+  const folderName = album.assetFolder || id;
+  const albumDir = path.join(ALBUMS_PUBLIC_DIR, folderName);
   if (fs.existsSync(albumDir)) {
     fs.rmSync(albumDir, { recursive: true, force: true });
   }

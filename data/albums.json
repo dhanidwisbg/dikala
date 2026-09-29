@@ -18,8 +18,8 @@
     },
     {
       "id": "urban-soul",
-      "title": "Urban Soul",
-      "category": "Street",
+      "title": "Ririn Indriani",
+      "category": "Graduation",
       "cover": "/assets/2/img-4.jpg",
       "date": "2026-02-10",
       "images": [
@@ -50,8 +50,8 @@
     },
     {
       "id": "intimate-vows",
-      "title": "Intimate Vows",
-      "category": "Wedding",
+      "title": "Sadar .M. Rajagukguk",
+      "category": "Graduation",
       "cover": "/assets/4/img-2.jpg",
       "date": "2026-03-20",
       "images": [
@@ -66,8 +66,8 @@
     },
     {
       "id": "city-lights",
-      "title": "City Lights",
-      "category": "Night",
+      "title": "Hetty Kusniawaty",
+      "category": "Graduation",
       "cover": "/assets/5/img-3.jpg",
       "date": "2026-04-12",
       "images": [
@@ -81,8 +81,8 @@
     },
     {
       "id": "neon-dreams",
-      "title": "Neon Dreams",
-      "category": "Abstract",
+      "title": "Agita Karina",
+      "category": "Graduation",
       "cover": "/assets/6/img-3.jpg",
       "date": "2026-05-08",
       "images": [
@@ -112,7 +112,7 @@
     },
     {
       "id": "midnight-flower",
-      "title": "Syafira Pandia",
+      "title": "Syafira Andini",
       "category": "Graduation",
       "cover": "/assets/8/img-3.jpg",
       "date": "2026-07-01",

@@ -144,7 +144,6 @@ export default function AdminDashboard() {
                         />
                         <div>
                           <div className="font-serif text-white text-lg">{album.title}</div>
-                          <div className="text-xs text-gray-500 font-mono mt-1">/{album.id}</div>
                         </div>
                       </div>
                     </td>

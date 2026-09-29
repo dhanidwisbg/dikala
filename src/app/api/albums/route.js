@@ -42,6 +42,17 @@ export async function POST(request) {
       return NextResponse.json({ error: 'At least one photo is required' }, { status: 400 });
     }
 
+    if (photos.length > 10) {
+      return NextResponse.json({ error: 'Maksimal 10 foto per album' }, { status: 400 });
+    }
+
+    // Validate file sizes (max 2 MB each)
+    const MAX_SIZE = 2 * 1024 * 1024;
+    const oversized = photos.filter(p => p.data.length > MAX_SIZE);
+    if (oversized.length > 0) {
+      return NextResponse.json({ error: `${oversized.length} file melebihi batas 2 MB` }, { status: 400 });
+    }
+
     // Put cover image first if a coverIndex is specified
     if (coverIndex > 0 && coverIndex < photos.length) {
       const cover = photos.splice(coverIndex, 1)[0];

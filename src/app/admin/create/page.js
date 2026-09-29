@@ -14,6 +14,9 @@ const CATEGORIES = [
   'Event',
 ];
 
+const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2 MB
+const MAX_PHOTOS = 10;
+
 export default function CreateAlbumPage() {
   const router = useRouter();
   const fileInputRef = useRef(null);
@@ -32,6 +35,23 @@ export default function CreateAlbumPage() {
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const newFiles = Array.from(e.target.files);
+
+      // Check max photos limit
+      const totalAfterAdd = files.length + newFiles.length;
+      if (totalAfterAdd > MAX_PHOTOS) {
+        setError(`Maksimal ${MAX_PHOTOS} foto per album. Kamu sudah punya ${files.length}, hanya bisa tambah ${MAX_PHOTOS - files.length} lagi.`);
+        return;
+      }
+
+      // Check file size limit
+      const oversized = newFiles.filter(f => f.size > MAX_FILE_SIZE);
+      if (oversized.length > 0) {
+        const names = oversized.map(f => f.name).join(', ');
+        setError(`File melebihi batas 2 MB: ${names}`);
+        return;
+      }
+
+      setError('');
       setFiles((prev) => [...prev, ...newFiles]);
     }
   };
@@ -164,7 +184,7 @@ export default function CreateAlbumPage() {
           <div className="border-t border-gray-800 pt-8">
             <div className="flex items-center justify-between mb-4">
               <label className="block text-sm uppercase tracking-widest text-gray-400">Photos</label>
-              <span className="text-xs text-gray-500">{files.length} selected</span>
+              <span className="text-xs text-gray-500">{files.length} / {MAX_PHOTOS} selected</span>
             </div>
             
             {/* Dropzone / Upload button */}
@@ -184,7 +204,7 @@ export default function CreateAlbumPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
               </svg>
               <p className="text-gray-400 font-medium">Click to select photos</p>
-              <p className="text-gray-600 text-sm mt-1">High-res JPG/PNG files</p>
+              <p className="text-gray-600 text-sm mt-1">JPG/PNG files — max 2 MB per foto, max {MAX_PHOTOS} foto</p>
             </div>
 
             {/* Photo Grid Preview */}

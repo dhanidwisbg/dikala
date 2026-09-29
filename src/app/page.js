@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { getAlbums } from '@/lib/albums';
+import { getAlbums } from '@/lib/blob-albums';
 
 export const metadata = {
   title: 'Home | DIKALA Photography',
 };
 
-export default function HomePage() {
-  const albums = getAlbums();
+export default async function HomePage() {
+  const albums = await getAlbums();
   // Show 3 most recent albums for the featured section
   const featured = albums
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))

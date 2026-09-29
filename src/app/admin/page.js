@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function AdminDashboard() {
+  const router = useRouter();
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState(null);
@@ -11,6 +13,16 @@ export default function AdminDashboard() {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editData, setEditData] = useState(null);
   const [saving, setSaving] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      router.push('/admin/login');
+      router.refresh();
+    } catch (err) {
+      console.error('Logout error:', err);
+    }
+  };
 
   useEffect(() => {
     fetchAlbums();
@@ -78,30 +90,42 @@ export default function AdminDashboard() {
 
   return (
     <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto admin-zone">
-      {/* Dev Mode Banner */}
-      <div className="bg-white/10 border border-white/20 text-white px-4 py-3 rounded-sm mb-8 flex items-center justify-center gap-2">
-        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+      {/* Cloud Mode Banner */}
+      <div className="bg-emerald-900/30 border border-emerald-500/30 text-emerald-200 px-4 py-3 rounded-sm mb-8 flex items-center justify-center gap-2">
+        <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
         </svg>
         <span className="text-sm font-medium tracking-wide">
-          Local Dev Mode — Changes write directly to the local filesystem. Read-only on Vercel.
+          Cloud Mode — Data disimpan di Vercel Blob. Bisa diakses di mana saja.
         </span>
       </div>
 
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
         <div>
           <h1 className="font-serif text-4xl text-white mb-2">CMS Dashboard</h1>
-          <p className="text-gray-400">Manage your portfolio albums locally.</p>
+          <p className="text-gray-400">Kelola album portofolio Dikala Photography.</p>
         </div>
-        <Link
-          href="/admin/create"
-          className="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-medium rounded-sm hover:bg-gray-200 transition-colors uppercase tracking-widest text-sm"
-        >
-          <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-          </svg>
-          Create New Album
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/admin/create"
+            className="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-medium rounded-sm hover:bg-gray-200 transition-colors uppercase tracking-widest text-xs"
+          >
+            <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            Create New Album
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="inline-flex items-center justify-center px-4 py-3 border border-gray-700 text-gray-300 hover:text-white hover:border-gray-500 rounded-sm transition-colors uppercase tracking-widest text-xs"
+            title="Keluar dari Admin"
+          >
+            <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            Logout
+          </button>
+        </div>
       </div>
 
       {/* Albums Table */}

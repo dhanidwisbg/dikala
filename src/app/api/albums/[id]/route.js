@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import { getAlbumById, deleteAlbum, updateAlbum } from '@/lib/albums';
+import { getAlbumById, deleteAlbum, updateAlbum } from '@/lib/blob-albums';
 
 export async function GET(request, { params }) {
   try {
-    const { id } = await params; // Next.js 15 requires awaiting params
-    const album = getAlbumById(id);
+    const { id } = await params;
+    const album = await getAlbumById(id);
     
     if (!album) {
       return NextResponse.json({ error: 'Album not found' }, { status: 404 });
@@ -19,7 +19,7 @@ export async function GET(request, { params }) {
 export async function DELETE(request, { params }) {
   try {
     const { id } = await params;
-    const success = deleteAlbum(id);
+    const success = await deleteAlbum(id);
     
     if (!success) {
       return NextResponse.json({ error: 'Album not found' }, { status: 404 });
@@ -35,7 +35,7 @@ export async function PUT(request, { params }) {
   try {
     const { id } = await params;
     const body = await request.json();
-    const updated = updateAlbum(id, body);
+    const updated = await updateAlbum(id, body);
     
     if (!updated) {
       return NextResponse.json({ error: 'Album not found' }, { status: 404 });

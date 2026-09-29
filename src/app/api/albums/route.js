@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { getAlbums, createAlbum } from '@/lib/albums';
+import { getAlbums, createAlbum } from '@/lib/blob-albums';
 
 export async function GET() {
   try {
-    const albums = getAlbums();
+    const albums = await getAlbums();
     return NextResponse.json({ albums });
   } catch (error) {
     console.error('Error fetching albums:', error);
@@ -28,7 +28,6 @@ export async function POST(request) {
     const photos = [];
     for (const [key, value] of formData.entries()) {
       if (key === 'photos' && value instanceof Blob) {
-        // value is a File object in Next.js
         const buffer = Buffer.from(await value.arrayBuffer());
         photos.push({
           name: value.name,
@@ -59,7 +58,7 @@ export async function POST(request) {
       photos.unshift(cover);
     }
 
-    const album = createAlbum({
+    const album = await createAlbum({
       title,
       category,
       date,

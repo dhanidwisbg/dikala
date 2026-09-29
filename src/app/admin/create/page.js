@@ -256,13 +256,23 @@ export default function CreateAlbumPage() {
             )}
           </div>
 
-          <div className="pt-6 border-t border-gray-800 text-right">
+          <div className="pt-6 border-t border-gray-800 flex items-center justify-between">
+            <span className="text-xs text-gray-500">
+              {loading && `Mengunggah ${files.length} foto ke cloud storage... Mohon jangan tutup halaman.`}
+            </span>
             <button
               type="submit"
               disabled={loading}
-              className="px-8 py-3 bg-white text-black font-medium rounded-sm hover:bg-gray-200 transition-colors uppercase tracking-widest text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-3 bg-white text-black font-medium rounded-sm hover:bg-gray-200 transition-colors uppercase tracking-widest text-xs disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
-              {loading ? 'Uploading...' : 'Create Album'}
+              {loading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                  <span>Uploading {files.length} Photos...</span>
+                </>
+              ) : (
+                <span>Create Album</span>
+              )}
             </button>
           </div>
         </form>

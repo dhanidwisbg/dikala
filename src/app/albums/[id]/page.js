@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Lightbox from '@/components/Lightbox';
 import { use } from 'react';
@@ -64,10 +65,13 @@ export default function SingleAlbumPage({ params }) {
       {/* Project Header */}
       <div className="relative h-[60vh] flex items-end pb-20 justify-center">
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src={album.cover}
             alt={album.title}
-            className="w-full h-full object-cover opacity-60 grayscale-off"
+            fill
+            className="object-cover opacity-60 grayscale-off"
+            priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
         </div>

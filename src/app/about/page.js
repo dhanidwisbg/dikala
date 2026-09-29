@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export const metadata = {
   title: 'About Us',
   description: 'Learn about DIKALA Photography — our story, our passion, and our team.',
@@ -12,10 +14,13 @@ export default function AboutPage() {
           {/* Image */}
           <div className="relative">
             <div className="absolute inset-0 bg-white/20 transform translate-x-4 translate-y-4 rounded-sm hidden md:block" />
-            <img
+            <Image
               src="/images/about-story.png"
               alt="Our Story"
+              width={600}
+              height={450}
               className="relative w-full h-auto rounded-sm shadow-2xl grayscale-off"
+              priority
             />
           </div>
 
@@ -46,11 +51,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Member 1 */}
             <div className="group">
-              <div className="aspect-square overflow-hidden mb-4 rounded-full w-48 mx-auto border-2 border-transparent group-hover:border-white transition-all">
-                <img
+              <div className="aspect-square overflow-hidden mb-4 rounded-full w-48 mx-auto border-2 border-transparent group-hover:border-white transition-all relative">
+                <Image
                   src="/images/team-jhody.png"
                   alt="Jhody"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  fill
+                  sizes="192px"
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
               </div>
               <h3 className="text-xl text-white font-serif">Jhody</h3>
@@ -59,11 +66,13 @@ export default function AboutPage() {
 
             {/* Member 2 */}
             <div className="group">
-              <div className="aspect-square overflow-hidden mb-4 rounded-full w-48 mx-auto border-2 border-transparent group-hover:border-white transition-all">
-                <img
+              <div className="aspect-square overflow-hidden mb-4 rounded-full w-48 mx-auto border-2 border-transparent group-hover:border-white transition-all relative">
+                <Image
                   src="/images/team-dila.png"
                   alt="Dila"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  fill
+                  sizes="192px"
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
               </div>
               <h3 className="text-xl text-white font-serif">Dila</h3>
@@ -72,11 +81,13 @@ export default function AboutPage() {
 
             {/* Member 3 */}
             <div className="group">
-              <div className="aspect-square overflow-hidden mb-4 rounded-full w-48 mx-auto border-2 border-transparent group-hover:border-white transition-all">
-                <img
+              <div className="aspect-square overflow-hidden mb-4 rounded-full w-48 mx-auto border-2 border-transparent group-hover:border-white transition-all relative">
+                <Image
                   src="/images/team-dhani.png"
                   alt="Dhani"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  fill
+                  sizes="192px"
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
               </div>
               <h3 className="text-xl text-white font-serif">Dhani</h3>

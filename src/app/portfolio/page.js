@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function PortfolioPage() {
   const [albums, setAlbums] = useState([]);
@@ -83,10 +84,12 @@ export default function PortfolioPage() {
               className={`group relative aspect-[4/5] overflow-hidden rounded-sm block opacity-0 animate-fade-in-up stagger-${Math.min(index + 1, 8)}`}
             >
               {/* Cover Image */}
-              <img
+              <Image
                 src={album.cover}
                 alt={album.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
 
               {/* Permanent Bottom Gradient */}

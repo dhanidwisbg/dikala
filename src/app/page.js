@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAlbums } from '@/lib/blob-albums';
 
 export const metadata = {
@@ -18,10 +19,13 @@ export default async function HomePage() {
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="/images/hero-bg.jpg"
             alt="Hero Background"
-            className="w-full h-full object-cover opacity-50 grayscale-off"
+            fill
+            className="object-cover opacity-50 grayscale-off"
+            priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black" />
         </div>
@@ -71,10 +75,12 @@ export default async function HomePage() {
                 href={`/albums/${album.id}`}
                 className="group relative aspect-[3/4] overflow-hidden cursor-pointer block"
               >
-                <img
+                <Image
                   src={album.cover}
                   alt={album.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
                   <h3 className="font-serif text-3xl text-white border-b-2 border-white pb-2 mb-2">

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
@@ -25,10 +26,13 @@ export default function Navbar() {
               href="/"
               className="flex items-center gap-3 font-serif text-2xl text-white tracking-wider font-bold"
             >
-              <img
+              <Image
                 src="/images/logo.png"
                 alt="DIKALA Logo"
-                className="h-20 w-auto grayscale-off"
+                width={120}
+                height={60}
+                className="h-16 w-auto grayscale-off object-contain"
+                priority
               />
             </Link>
           </div>

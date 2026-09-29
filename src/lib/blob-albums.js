@@ -196,7 +196,7 @@ export async function deleteAlbum(id) {
 /**
  * Update an existing album's metadata
  */
-export async function updateAlbum(id, { title, category, assetFolder }) {
+export async function updateAlbum(id, { title, category, images, cover, assetFolder }) {
   const albums = await getAlbums();
   const index = albums.findIndex((a) => a.id === id);
   if (index === -1) return null;
@@ -205,6 +205,16 @@ export async function updateAlbum(id, { title, category, assetFolder }) {
 
   if (title) album.title = title;
   if (category) album.category = category;
+  if (Array.isArray(images)) {
+    album.images = images;
+    // Auto-update cover if current cover was deleted or not in list
+    if (!album.images.includes(album.cover)) {
+      album.cover = album.images[0] || '';
+    }
+  }
+  if (cover && album.images.includes(cover)) {
+    album.cover = cover;
+  }
 
   if (assetFolder && assetFolder !== album.assetFolder) {
     album.assetFolder = assetFolder;
@@ -224,3 +234,5 @@ export async function updateAlbum(id, { title, category, assetFolder }) {
   await saveAlbums(albums);
   return album;
 }
+
+export { uploadImage };
